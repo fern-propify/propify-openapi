@@ -1276,3 +1276,6 @@ components:
       type: apiKey
       in: header
       name: propify-api-secret
+servers:
+  - url: demo.getpropify.com/v1
+    description: demo
