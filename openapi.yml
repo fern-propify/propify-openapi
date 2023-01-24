@@ -1,0 +1,1284 @@
+openapi: 3.0.1
+info:
+  title: Propify API
+  version: ''
+paths:
+  /v1/accounting/:
+    get:
+      operationId: AccountingService.getAllRecords
+      tags:
+        - Accounting
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllAccountingRecords'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorType'
+      summary: Retrieves all accounting records
+      security: &ref_0
+        - PropifyApiKeyAuth: []
+  /v1/applicants/:
+    get:
+      description: Get all applicants
+      operationId: ApplicantsService.getAllApplicants
+      tags:
+        - Applicants
+      parameters:
+        - name: order-by
+          in: query
+          description: >
+            Order the results by a field. 
+
+            Optionally include asc or desc preceded by a colon (default is
+            asc). 
+
+            Example: `?order-by=vendor:asc,created_at:desc`
+          required: false
+          schema:
+            type: string
+        - name: offset
+          in: query
+          description: Can be used for paginating results
+          required: false
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: >-
+            A number between 1 and 250 to determine the number of results to
+            return in a single query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllApplicants'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorType'
+      summary: Retrieve all applicants
+      security: *ref_0
+  /v1/applicants/{id}:
+    get:
+      description: Get a single applicant
+      operationId: ApplicantsService.getApplicant
+      tags:
+        - Applicants
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ApplicantId'
+        - name: order-by
+          in: query
+          description: >
+            Order the results by a field. 
+
+            Optionally include asc or desc preceded by a colon (default is
+            asc). 
+
+            Example: `?order-by=vendor:asc,created_at:desc`
+          required: false
+          schema:
+            type: string
+        - name: offset
+          in: query
+          description: Can be used for paginating results
+          required: false
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: >-
+            A number between 1 and 250 to determine the number of results to
+            return in a single query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Applicant'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorType'
+      summary: Retrieves a single applicants by applicants ID
+      security: *ref_0
+  /v1/leads/:
+    get:
+      operationId: LeadsService.get
+      tags:
+        - Leads
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllLeads'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorType'
+      summary: Retrieves all leads
+      security: *ref_0
+  /v1/leases/:
+    get:
+      description: Get all leases
+      operationId: LeasesService.getAllLeases
+      tags:
+        - Leases
+      parameters:
+        - name: order-by
+          in: query
+          description: >
+            Order the results by a field. 
+
+            Optionally include asc or desc preceded by a colon (default is
+            asc). 
+
+            Example: `?order-by=vendor:asc,created_at:desc`
+          required: false
+          schema:
+            type: string
+        - name: offset
+          in: query
+          description: Can be used for paginating results
+          required: false
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: >-
+            A number between 1 and 250 to determine the number of results to
+            return in a single query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllLeases'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorType'
+      summary: Retrieves all leases
+      security: *ref_0
+  /v1/listings/:
+    get:
+      operationId: ListingsService.getAllListings
+      tags:
+        - Listings
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllListings'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorType'
+      summary: Retrieves all listings
+      security: *ref_0
+  /v1/properties/:
+    get:
+      description: Get all properties
+      operationId: PropertiesService.getAllProperties
+      tags:
+        - Properties
+      parameters:
+        - name: order-by
+          in: query
+          description: >
+            Order the results by a field. 
+
+            Optionally include asc or desc preceded by a colon (default is
+            asc). 
+
+            Example: `?order-by=vendor:asc,created_at:desc`
+          required: false
+          schema:
+            type: string
+        - name: offset
+          in: query
+          description: Can be used for paginating results
+          required: false
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: >-
+            A number between 1 and 250 to determine the number of results to
+            return in a single query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllProperties'
+      summary: Retrieves all properties
+      security: *ref_0
+  /v1/rent-payment-history/:
+    get:
+      description: Get all rent payment history records
+      operationId: RentPaymentHistoryService.getAllRentPaymentHistory
+      tags:
+        - RentPaymentHistory
+      parameters:
+        - name: order-by
+          in: query
+          description: >
+            Order the results by a field. 
+
+            Optionally include asc or desc preceded by a colon (default is
+            asc). 
+
+            Example: `?order-by=vendor:asc,created_at:desc`
+          required: false
+          schema:
+            type: string
+        - name: offset
+          in: query
+          description: Can be used for paginating results
+          required: false
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: >-
+            A number between 1 and 250 to determine the number of results to
+            return in a single query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllRentPaymentHistory'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorType'
+      summary: Retrieves all rent payment history records
+      security: *ref_0
+  /v1/residents/:
+    get:
+      description: Get all residents
+      operationId: ResidentsService.getAllResidents
+      tags:
+        - Residents
+      parameters:
+        - name: order-by
+          in: query
+          description: >
+            Order the results by a field. 
+
+            Optionally include asc or desc preceded by a colon (default is
+            asc). 
+
+            Example: `?order-by=vendor:asc,created_at:desc`
+          required: false
+          schema:
+            type: string
+        - name: offset
+          in: query
+          description: Can be used for paginating results
+          required: false
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: >-
+            A number between 1 and 250 to determine the number of results to
+            return in a single query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllResidents'
+      summary: Retrieves all residents
+      security: *ref_0
+  /v1/residents/{id}:
+    get:
+      description: Get a single resident
+      operationId: ResidentsService.get
+      tags:
+        - Residents
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ResidentId'
+        - name: order-by
+          in: query
+          description: >
+            Order the results by a field. 
+
+            Optionally include asc or desc preceded by a colon (default is
+            asc). 
+
+            Example: `?order-by=vendor:asc,created_at:desc`
+          required: false
+          schema:
+            type: string
+        - name: offset
+          in: query
+          description: Can be used for paginating results
+          required: false
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: >-
+            A number between 1 and 250 to determine the number of results to
+            return in a single query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SingleResident'
+      summary: Retrieves a single resident by resident ID
+      security: *ref_0
+  /v1/unit-pricing/:
+    get:
+      operationId: UnitPricingService.getAllUnitPricing
+      tags:
+        - UnitPricing
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllUnitPricing'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorType'
+      summary: Retrieves all unit pricing
+      security: *ref_0
+  /v1/units/:
+    get:
+      description: Get all units
+      operationId: UnitsService.getAllUnits
+      tags:
+        - Units
+      parameters:
+        - name: order-by
+          in: query
+          description: >
+            Order the results by a field. 
+
+            Optionally include asc or desc preceded by a colon (default is
+            asc). 
+
+            Example: `?order-by=vendor:asc,created_at:desc`
+          required: false
+          schema:
+            type: string
+        - name: offset
+          in: query
+          description: Can be used for paginating results
+          required: false
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: >-
+            A number between 1 and 250 to determine the number of results to
+            return in a single query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllUnits'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorType'
+      summary: Retrieves all units
+      security: *ref_0
+  /v1/vendors/:
+    get:
+      operationId: VendorsService.getAllVendors
+      tags:
+        - Vendors
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllVendors'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorType'
+      summary: Retrieves all vendors
+      security: *ref_0
+  /v1/work-orders/:
+    get:
+      description: Get all work orders
+      operationId: WorkOrdersService.getAllWorkOrders
+      tags:
+        - WorkOrders
+      parameters:
+        - name: order-by
+          in: query
+          description: >
+            Order the results by a field. 
+
+            Optionally include asc or desc preceded by a colon (default is
+            asc). 
+
+            Example: `?order-by=vendor:asc,created_at:desc`
+          required: false
+          schema:
+            type: string
+        - name: offset
+          in: query
+          description: Can be used for paginating results
+          required: false
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: >-
+            A number between 1 and 250 to determine the number of results to
+            return in a single query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllWorkOrders'
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorType'
+      summary: Retrieves all work orders
+      security: *ref_0
+components:
+  schemas:
+    AllAccountingRecords:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountingRecord'
+      required:
+        - meta
+        - results
+    AccountingRecord: {}
+    AllApplicants:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Applicant'
+      required:
+        - meta
+        - results
+    Applicant:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier for the applicant
+        created_at:
+          type: string
+          description: >-
+            The
+            [date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString)
+            record first entered propify
+        updated_at:
+          type: string
+          description: >-
+            The
+            [date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString)
+            record was last updated in propify
+        x_id:
+          type: string
+          description: The external ID from the source vendor
+        x_property_id:
+          type: string
+          description: The external lease ID from the source vendor
+        first_name:
+          type: string
+          description: First name of the applicant
+        middle_name:
+          type: string
+          description: Middle name of the applicant
+        last_name:
+          type: string
+          description: Last name of the applicant
+        date_of_birth:
+          type: string
+          format: date-time
+          description: Applicant date of birth
+        address_1:
+          type: string
+          description: Applicant street address line 1
+        address_2:
+          type: string
+          description: Applicant street address line 2
+        city:
+          type: string
+          description: Applicant city
+        state:
+          type: string
+          description: Applicant state
+        zip:
+          type: string
+          description: Applicant zip code
+        phone_1:
+          type: string
+          description: Applicant phone number
+        phone_1_type:
+          type: string
+          description: The type of phone number
+        phone_2:
+          type: string
+          description: Applicant alternative phone number
+        phone_2_type:
+          type: string
+          description: The type of the alternative phone number
+        email_1:
+          type: string
+          description: Applicant email address
+        email_2:
+          type: string
+          description: Applicant email address alternative
+        notes:
+          type: string
+          description: Notes about the applicant
+        integration_vendor:
+          $ref: '#/components/schemas/IntegrationVendor'
+          description: The property management system of record
+      required:
+        - id
+        - created_at
+        - updated_at
+        - x_id
+        - integration_vendor
+    ResidentId:
+      type: string
+    ApplicantId:
+      type: string
+    Meta:
+      type: object
+      properties:
+        offset:
+          type: integer
+        limit:
+          type: integer
+        orderBy:
+          type: array
+          items: {}
+      required:
+        - orderBy
+    IntegrationVendor:
+      type: string
+      enum:
+        - DoorLoop
+        - Buildium
+        - Yardi
+    DefaultErrorType:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/ErrorMessage'
+      required:
+        - error
+    ErrorMessage:
+      type: object
+      properties:
+        message:
+          type: string
+      required:
+        - message
+    AllLeads:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Lead'
+      required:
+        - meta
+        - results
+    Lead: {}
+    Lease:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ResidentId'
+          description: The unique identifier for the resident
+        created_at:
+          type: string
+          format: date-time
+          description: The date record first entered propify
+        updated_at:
+          type: string
+          format: date-time
+          description: The date record was last updated in propify
+        x_id:
+          type: string
+          description: The external ID from the source vendor
+        x_property_id:
+          type: string
+          description: The external property ID from the source vendor
+        x_resident_id:
+          type: string
+          description: The external resident ID from the source vendor
+        x_unit_id:
+          type: string
+          description: The external unit ID from the source vendor
+        rent_amount_in_cents:
+          type: number
+          format: double
+          description: The rent amount in cents
+        rent_due_day:
+          type: integer
+          description: The day of the month the rent is due
+        deposit_amount:
+          type: string
+          description: The deposit amount in cents
+        deposit_amount_amount_in_cents:
+          type: number
+          format: double
+          description: The deposit amount in cents
+        deposit_date:
+          type: string
+          format: date-time
+          description: The date the deposit was received
+        signature_date:
+          type: string
+          format: date-time
+          description: The date the lease was signed
+        start_date:
+          type: string
+          format: date-time
+          description: The date the lease starts
+        end_date:
+          type: string
+          format: date-time
+          description: The date the lease ends
+        application_date:
+          type: string
+          format: date-time
+          description: The date the application was submitted
+        scheduled_move_in_date:
+          type: string
+          format: date-time
+          description: The date the resident is scheduled to move in
+        scheduled_move_out_date:
+          type: string
+          format: date-time
+          description: The date the resident is scheduled to move out
+        realized_move_in_date:
+          type: string
+          format: date-time
+          description: The date the resident actually moved in
+        realized_move_out_date:
+          type: string
+          format: date-time
+          description: The date the resident actually moved out
+        status:
+          type: string
+          description: The status of the lease
+        type:
+          type: string
+          description: The type of lease
+        integration_vendor:
+          $ref: '#/components/schemas/IntegrationVendor'
+          description: The property management system of record
+      required:
+        - id
+        - created_at
+        - updated_at
+        - x_id
+        - integration_vendor
+    AllLeases:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Lease'
+      required:
+        - meta
+        - results
+    AllListings:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Listing'
+      required:
+        - meta
+        - results
+    Listing: {}
+    Property:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier for the property
+        created_at:
+          type: string
+          format: date-time
+          description: The date record first entered propify
+        updated_at:
+          type: string
+          format: date-time
+          description: The date record was last updated in propify
+        x_id:
+          type: string
+          description: The external ID from the source vendor
+        name:
+          type: string
+          description: The name of the property
+        number_of_units:
+          type: integer
+          description: The number of units in the property
+        street_address_1:
+          type: string
+          description: The first line of the street address
+        street_address_2:
+          type: string
+          description: The second line of the street address
+        city:
+          type: string
+          description: The city
+        state:
+          type: string
+          description: The state
+        zip:
+          type: string
+          description: The zip code
+        year_built:
+          type: integer
+          description: The year the property was built
+        manager_name:
+          type: string
+          description: The name of the property manager
+        manager_phone_1:
+          type: string
+          description: The first phone number of the property manager
+        manager_phone_1_type:
+          type: string
+          description: The type of the first phone number of the property manager
+        manager_phone_2:
+          type: string
+          description: The second phone number of the property manager
+        manager_phone_2_type:
+          type: string
+          description: The type of the second phone number of the property manager
+        manager_email:
+          type: string
+          description: The email address of the property manager
+        integration_vendor:
+          $ref: '#/components/schemas/IntegrationVendor'
+          description: The property management system of record
+      required:
+        - id
+        - created_at
+        - updated_at
+        - x_id
+        - integration_vendor
+    AllProperties:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Property'
+      required:
+        - meta
+        - results
+    RentPaymentHistory:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier for the applicant
+        created_at:
+          type: string
+          description: The date record first entered propify
+        updated_at:
+          type: string
+          description: The date record was last updated in propify
+        x_id:
+          type: string
+          description: The external ID from the source vendor
+        x_lease_id:
+          type: string
+          description: The external ID of the lease from the source vendor
+        x_resident_id:
+          type: string
+          description: The external ID of the resident from the source vendor
+        x_property_id:
+          type: string
+          description: The external ID of the property from the source vendor
+        amount_in_cents:
+          type: number
+          format: double
+          description: The amount of the payment in cents
+        date_received:
+          type: string
+          description: The date the payment was received
+        payment_type:
+          type: string
+          description: The type of payment
+        payment_status:
+          type: string
+          description: The status of the payment
+        integration_vendor:
+          $ref: '#/components/schemas/IntegrationVendor'
+          description: The property management system of record
+      required:
+        - id
+        - created_at
+        - updated_at
+        - x_id
+        - integration_vendor
+    AllRentPaymentHistory:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/RentPaymentHistory'
+      required:
+        - meta
+        - results
+    Resident:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier for the resident
+        created_at:
+          type: string
+          description: The date record first entered propify
+        updated_at:
+          type: string
+          description: The date record was last updated in propify
+        x_id:
+          type: string
+          description: The external ID from the source vendor
+        x_lease_id:
+          type: string
+          description: The external lease ID from the source vendor
+        first_name:
+          type: string
+          description: First name of the resident
+        middle_name:
+          type: string
+          description: Middle name of the resident
+        last_name:
+          type: string
+          description: Last name of the resident
+        date_of_birth:
+          type: string
+          description: Resident date of birth
+        address_1:
+          type: string
+          description: Resident street address line 1
+        address_2:
+          type: string
+          description: Resident street address line 2
+        city:
+          type: string
+          description: Resident city
+        state:
+          type: string
+          description: Resident state
+        zip:
+          type: string
+          description: Resident zip code
+        phone_1:
+          type: string
+          description: Resident phone number
+        phone_1_type:
+          type: string
+          description: The type of phone number 1
+        phone_2:
+          type: string
+          description: Resident phone number 2
+        phone_2_type:
+          type: string
+          description: The type of phone number 2
+        email_1:
+          type: string
+          description: Resident email address
+        email_2:
+          type: string
+          description: Resident email address alternate
+        address_1_alternate:
+          type: string
+          description: Resident street address line 1 alternate
+        address_2_alternate:
+          type: string
+          description: Resident street address line 2 alternate
+        city_alternate:
+          type: string
+          description: Resident city alternate
+        state_alternate:
+          type: string
+          description: Resident state alternate
+        zip_alternate:
+          type: string
+          description: Resident zip code alternate
+        is_employee:
+          type: boolean
+          description: Is the resident an employee
+        notes:
+          type: string
+          description: Notes
+        balance_in_cents:
+          type: number
+          format: double
+          description: The rent balance owed
+        late_balance_in_cents:
+          type: number
+          format: double
+          description: The past due rent balance owed
+        integration_vendor:
+          type: string
+          description: The property management system of record
+      required:
+        - id
+        - created_at
+        - updated_at
+        - x_id
+        - integration_vendor
+    AllResidents:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Resident'
+      required:
+        - meta
+        - results
+    SingleResident:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        results:
+          $ref: '#/components/schemas/Resident'
+      required:
+        - meta
+    AllUnitPricing:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/UnitPricing'
+      required:
+        - meta
+        - results
+    UnitPricing: {}
+    Unit:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier for the property
+        created_at:
+          type: string
+          description: The date record first entered propify
+        updated_at:
+          type: string
+          description: The date record was last updated in propify
+        x_id:
+          type: string
+          description: The external ID from the source vendor
+        x_property_id:
+          type: string
+          description: The external ID of the property from the source vendor
+        number:
+          type: string
+          description: The unit number
+        bedrooms:
+          type: string
+          description: The number of bedrooms
+        bathrooms:
+          type: string
+          description: The number of bathrooms
+        square_feet:
+          type: integer
+          description: The square footage of the unit
+        building_number:
+          type: string
+          description: The building number
+        building_name:
+          type: string
+          description: The building name
+        floor_plan_code:
+          type: string
+          description: The floor plan code
+        floor_plan_name:
+          type: string
+          description: The floor plan name
+        street_address_1:
+          type: string
+          description: The street address line 1
+        street_address_2:
+          type: string
+          description: The street address line 2
+        city:
+          type: string
+          description: The city
+        state:
+          type: string
+          description: The state
+        zip:
+          type: string
+          description: The zip code
+        rent_amount_market_in_cents:
+          type: number
+          format: double
+          description: The market rent amount in cents
+        rent_amount_min_in_cents:
+          type: number
+          format: double
+          description: The minimum rent amount in cents
+        rent_amount_max_in_cents:
+          type: number
+          format: double
+          description: The maximum rent amount in cents
+        is_available:
+          type: boolean
+          description: Whether the unit is available
+        is_furnished:
+          type: boolean
+          description: Whether the unit is furnished
+        is_listed:
+          type: boolean
+          description: Whether the unit is listed
+        is_vacant:
+          type: boolean
+          description: Whether the unit is vacant
+        integration_vendor:
+          $ref: '#/components/schemas/IntegrationVendor'
+          description: The property management system of record
+      required:
+        - id
+        - created_at
+        - updated_at
+        - x_id
+        - x_property_id
+        - integration_vendor
+    AllUnits:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Unit'
+      required:
+        - meta
+        - results
+    AllVendors:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Vendor'
+      required:
+        - meta
+        - results
+    Vendor: {}
+    WorkOrder:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier for the property
+        created_at:
+          type: string
+          description: The date record first entered propify
+        updated_at:
+          type: string
+          description: The date record was last updated in propify
+        x_id:
+          type: string
+          description: The external ID from the source vendor
+        x_property_id:
+          type: string
+          description: The external ID of the property from the source vendor
+        x_unit_id:
+          type: string
+          description: The external ID of the unit from the source vendor
+        x_resident_id:
+          type: string
+          description: The external ID of the resident from the source vendor
+        details:
+          type: string
+          description: The details of the work order
+        due_date:
+          type: string
+          description: The date the work order is due
+        completed_date:
+          type: string
+          description: The date the work order was completed
+        entry_contact:
+          type: string
+          description: The contact who entered the work order
+        entry_date:
+          type: string
+          description: The date the work order was entered
+        entry_type:
+          type: string
+          description: The type of entry
+        invoice_amount:
+          type: integer
+          description: The amount of the invoice
+        invoice_number:
+          type: string
+          description: The number of the invoice
+        notes:
+          type: string
+          description: The notes of the work order
+        priority:
+          type: string
+          description: The priority of the work order
+        status:
+          type: string
+          description: The status of the work order
+        type:
+          type: string
+          description: The type of the work order
+        integration_vendor:
+          $ref: '#/components/schemas/IntegrationVendor'
+          description: The property management system of record
+      required:
+        - id
+        - created_at
+        - updated_at
+        - x_id
+        - integration_vendor
+    AllWorkOrders:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkOrder'
+      required:
+        - meta
+        - results
+  securitySchemes:
+    PropifyApiKeyAuth:
+      type: apiKey
+      in: header
+      name: propify-api-key
