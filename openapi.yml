@@ -3,7 +3,7 @@ info:
   title: Propify API
   version: ''
 paths:
-  /v1/accounting/:
+  /v1/accounting:
     get:
       operationId: AccountingService.getAllRecords
       tags:
@@ -15,7 +15,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AllAccountingRecords'
+                $ref: '#/components/schemas/GetAllAccountingRecordsResponse'
         '400':
           description: ''
           content:
@@ -24,11 +24,11 @@ paths:
                 $ref: '#/components/schemas/DefaultErrorType'
       summary: Retrieves all accounting records
       security: &ref_0
-        - PropifyApiKeyAuth: []
-  /v1/applicants/:
+        - PropifyApiSecretAuth: []
+  /v1/applicants:
     get:
       description: Get all applicants
-      operationId: ApplicantsService.getAllApplicants
+      operationId: ApplicantsService.getAll
       tags:
         - Applicants
       parameters:
@@ -64,7 +64,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AllApplicants'
+                $ref: '#/components/schemas/GetAllApplicantsResponse'
         '400':
           description: ''
           content:
@@ -76,7 +76,7 @@ paths:
   /v1/applicants/{id}:
     get:
       description: Get a single applicant
-      operationId: ApplicantsService.getApplicant
+      operationId: ApplicantsService.get
       tags:
         - Applicants
       parameters:
@@ -126,9 +126,9 @@ paths:
                 $ref: '#/components/schemas/DefaultErrorType'
       summary: Retrieves a single applicants by applicants ID
       security: *ref_0
-  /v1/leads/:
+  /v1/leads:
     get:
-      operationId: LeadsService.get
+      operationId: LeadsService.getAll
       tags:
         - Leads
       parameters: []
@@ -138,7 +138,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AllLeads'
+                $ref: '#/components/schemas/GetAllLeadsResponse'
         '400':
           description: ''
           content:
@@ -147,10 +147,10 @@ paths:
                 $ref: '#/components/schemas/DefaultErrorType'
       summary: Retrieves all leads
       security: *ref_0
-  /v1/leases/:
+  /v1/leases:
     get:
       description: Get all leases
-      operationId: LeasesService.getAllLeases
+      operationId: LeasesService.getAll
       tags:
         - Leases
       parameters:
@@ -186,7 +186,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AllLeases'
+                $ref: '#/components/schemas/GetAllLeasesResponse'
         '400':
           description: ''
           content:
@@ -195,9 +195,9 @@ paths:
                 $ref: '#/components/schemas/DefaultErrorType'
       summary: Retrieves all leases
       security: *ref_0
-  /v1/listings/:
+  /v1/listings:
     get:
-      operationId: ListingsService.getAllListings
+      operationId: ListingsService.getAll
       tags:
         - Listings
       parameters: []
@@ -207,7 +207,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AllListings'
+                $ref: '#/components/schemas/GetAllListingsResponse'
         '400':
           description: ''
           content:
@@ -216,10 +216,10 @@ paths:
                 $ref: '#/components/schemas/DefaultErrorType'
       summary: Retrieves all listings
       security: *ref_0
-  /v1/properties/:
+  /v1/properties:
     get:
       description: Get all properties
-      operationId: PropertiesService.getAllProperties
+      operationId: PropertiesService.getAll
       tags:
         - Properties
       parameters:
@@ -255,13 +255,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AllProperties'
+                $ref: '#/components/schemas/GetAllPropertiesResponse'
       summary: Retrieves all properties
       security: *ref_0
-  /v1/rent-payment-history/:
+  /v1/rent-payment-history:
     get:
       description: Get all rent payment history records
-      operationId: RentPaymentHistoryService.getAllRentPaymentHistory
+      operationId: RentPaymentHistoryService.getAllRecords
       tags:
         - RentPaymentHistory
       parameters:
@@ -297,7 +297,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AllRentPaymentHistory'
+                $ref: '#/components/schemas/GetAllRentPaymentRecordsResponse'
         '400':
           description: ''
           content:
@@ -306,10 +306,10 @@ paths:
                 $ref: '#/components/schemas/DefaultErrorType'
       summary: Retrieves all rent payment history records
       security: *ref_0
-  /v1/residents/:
+  /v1/residents:
     get:
       description: Get all residents
-      operationId: ResidentsService.getAllResidents
+      operationId: ResidentsService.getAll
       tags:
         - Residents
       parameters:
@@ -345,7 +345,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AllResidents'
+                $ref: '#/components/schemas/GetAllResidentsResponse'
       summary: Retrieves all residents
       security: *ref_0
   /v1/residents/{id}:
@@ -392,12 +392,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SingleResident'
+                $ref: '#/components/schemas/GetResidentResponse'
       summary: Retrieves a single resident by resident ID
       security: *ref_0
-  /v1/unit-pricing/:
+  /v1/unit-pricing:
     get:
-      operationId: UnitPricingService.getAllUnitPricing
+      operationId: UnitPricingService.getAllUnitPrices
       tags:
         - UnitPricing
       parameters: []
@@ -407,7 +407,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AllUnitPricing'
+                $ref: '#/components/schemas/GetAllUnitPricesResponse'
         '400':
           description: ''
           content:
@@ -416,10 +416,10 @@ paths:
                 $ref: '#/components/schemas/DefaultErrorType'
       summary: Retrieves all unit pricing
       security: *ref_0
-  /v1/units/:
+  /v1/units:
     get:
       description: Get all units
-      operationId: UnitsService.getAllUnits
+      operationId: UnitsService.getAll
       tags:
         - Units
       parameters:
@@ -455,7 +455,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AllUnits'
+                $ref: '#/components/schemas/GetAllUnitsResponse'
         '400':
           description: ''
           content:
@@ -464,9 +464,9 @@ paths:
                 $ref: '#/components/schemas/DefaultErrorType'
       summary: Retrieves all units
       security: *ref_0
-  /v1/vendors/:
+  /v1/vendors:
     get:
-      operationId: VendorsService.getAllVendors
+      operationId: VendorsService.getAll
       tags:
         - Vendors
       parameters: []
@@ -476,7 +476,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AllVendors'
+                $ref: '#/components/schemas/GetAllVendorsResponse'
         '400':
           description: ''
           content:
@@ -485,10 +485,10 @@ paths:
                 $ref: '#/components/schemas/DefaultErrorType'
       summary: Retrieves all vendors
       security: *ref_0
-  /v1/work-orders/:
+  /v1/work-orders:
     get:
       description: Get all work orders
-      operationId: WorkOrdersService.getAllWorkOrders
+      operationId: WorkOrdersService.getAll
       tags:
         - WorkOrders
       parameters:
@@ -524,7 +524,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AllWorkOrders'
+                $ref: '#/components/schemas/GetAllWorkOrdersResponse'
         '400':
           description: ''
           content:
@@ -535,11 +535,11 @@ paths:
       security: *ref_0
 components:
   schemas:
-    AllAccountingRecords:
+    GetAllAccountingRecordsResponse:
       type: object
       properties:
         meta:
-          $ref: '#/components/schemas/Meta'
+          $ref: '#/components/schemas/Metadata'
         results:
           type: array
           items:
@@ -548,11 +548,11 @@ components:
         - meta
         - results
     AccountingRecord: {}
-    AllApplicants:
+    GetAllApplicantsResponse:
       type: object
       properties:
         meta:
-          $ref: '#/components/schemas/Meta'
+          $ref: '#/components/schemas/Metadata'
         results:
           type: array
           items:
@@ -634,7 +634,7 @@ components:
           type: string
           description: Notes about the applicant
         integration_vendor:
-          $ref: '#/components/schemas/IntegrationVendor'
+          type: string
           description: The property management system of record
       required:
         - id
@@ -646,7 +646,7 @@ components:
       type: string
     ApplicantId:
       type: string
-    Meta:
+    Metadata:
       type: object
       properties:
         offset:
@@ -658,12 +658,6 @@ components:
           items: {}
       required:
         - orderBy
-    IntegrationVendor:
-      type: string
-      enum:
-        - DoorLoop
-        - Buildium
-        - Yardi
     DefaultErrorType:
       type: object
       properties:
@@ -678,11 +672,11 @@ components:
           type: string
       required:
         - message
-    AllLeads:
+    GetAllLeadsResponse:
       type: object
       properties:
         meta:
-          $ref: '#/components/schemas/Meta'
+          $ref: '#/components/schemas/Metadata'
         results:
           type: array
           items:
@@ -774,7 +768,7 @@ components:
           type: string
           description: The type of lease
         integration_vendor:
-          $ref: '#/components/schemas/IntegrationVendor'
+          type: string
           description: The property management system of record
       required:
         - id
@@ -782,11 +776,11 @@ components:
         - updated_at
         - x_id
         - integration_vendor
-    AllLeases:
+    GetAllLeasesResponse:
       type: object
       properties:
         meta:
-          $ref: '#/components/schemas/Meta'
+          $ref: '#/components/schemas/Metadata'
         results:
           type: array
           items:
@@ -794,11 +788,11 @@ components:
       required:
         - meta
         - results
-    AllListings:
+    GetAllListingsResponse:
       type: object
       properties:
         meta:
-          $ref: '#/components/schemas/Meta'
+          $ref: '#/components/schemas/Metadata'
         results:
           type: array
           items:
@@ -867,7 +861,7 @@ components:
           type: string
           description: The email address of the property manager
         integration_vendor:
-          $ref: '#/components/schemas/IntegrationVendor'
+          type: string
           description: The property management system of record
       required:
         - id
@@ -875,11 +869,11 @@ components:
         - updated_at
         - x_id
         - integration_vendor
-    AllProperties:
+    GetAllPropertiesResponse:
       type: object
       properties:
         meta:
-          $ref: '#/components/schemas/Meta'
+          $ref: '#/components/schemas/Metadata'
         results:
           type: array
           items:
@@ -887,7 +881,7 @@ components:
       required:
         - meta
         - results
-    RentPaymentHistory:
+    RentPaymentRecord:
       type: object
       properties:
         id:
@@ -925,7 +919,7 @@ components:
           type: string
           description: The status of the payment
         integration_vendor:
-          $ref: '#/components/schemas/IntegrationVendor'
+          type: string
           description: The property management system of record
       required:
         - id
@@ -933,15 +927,15 @@ components:
         - updated_at
         - x_id
         - integration_vendor
-    AllRentPaymentHistory:
+    GetAllRentPaymentRecordsResponse:
       type: object
       properties:
         meta:
-          $ref: '#/components/schemas/Meta'
+          $ref: '#/components/schemas/Metadata'
         results:
           type: array
           items:
-            $ref: '#/components/schemas/RentPaymentHistory'
+            $ref: '#/components/schemas/RentPaymentRecord'
       required:
         - meta
         - results
@@ -1046,11 +1040,11 @@ components:
         - updated_at
         - x_id
         - integration_vendor
-    AllResidents:
+    GetAllResidentsResponse:
       type: object
       properties:
         meta:
-          $ref: '#/components/schemas/Meta'
+          $ref: '#/components/schemas/Metadata'
         results:
           type: array
           items:
@@ -1058,28 +1052,28 @@ components:
       required:
         - meta
         - results
-    SingleResident:
+    GetResidentResponse:
       type: object
       properties:
         meta:
-          $ref: '#/components/schemas/Meta'
+          $ref: '#/components/schemas/Metadata'
         results:
           $ref: '#/components/schemas/Resident'
       required:
         - meta
-    AllUnitPricing:
+    GetAllUnitPricesResponse:
       type: object
       properties:
         meta:
-          $ref: '#/components/schemas/Meta'
+          $ref: '#/components/schemas/Metadata'
         results:
           type: array
           items:
-            $ref: '#/components/schemas/UnitPricing'
+            $ref: '#/components/schemas/UnitPrice'
       required:
         - meta
         - results
-    UnitPricing: {}
+    UnitPrice: {}
     Unit:
       type: object
       properties:
@@ -1162,7 +1156,7 @@ components:
           type: boolean
           description: Whether the unit is vacant
         integration_vendor:
-          $ref: '#/components/schemas/IntegrationVendor'
+          type: string
           description: The property management system of record
       required:
         - id
@@ -1171,11 +1165,11 @@ components:
         - x_id
         - x_property_id
         - integration_vendor
-    AllUnits:
+    GetAllUnitsResponse:
       type: object
       properties:
         meta:
-          $ref: '#/components/schemas/Meta'
+          $ref: '#/components/schemas/Metadata'
         results:
           type: array
           items:
@@ -1183,11 +1177,11 @@ components:
       required:
         - meta
         - results
-    AllVendors:
+    GetAllVendorsResponse:
       type: object
       properties:
         meta:
-          $ref: '#/components/schemas/Meta'
+          $ref: '#/components/schemas/Metadata'
         results:
           type: array
           items:
@@ -1257,7 +1251,7 @@ components:
           type: string
           description: The type of the work order
         integration_vendor:
-          $ref: '#/components/schemas/IntegrationVendor'
+          type: string
           description: The property management system of record
       required:
         - id
@@ -1265,11 +1259,11 @@ components:
         - updated_at
         - x_id
         - integration_vendor
-    AllWorkOrders:
+    GetAllWorkOrdersResponse:
       type: object
       properties:
         meta:
-          $ref: '#/components/schemas/Meta'
+          $ref: '#/components/schemas/Metadata'
         results:
           type: array
           items:
@@ -1278,7 +1272,7 @@ components:
         - meta
         - results
   securitySchemes:
-    PropifyApiKeyAuth:
+    PropifyApiSecretAuth:
       type: apiKey
       in: header
-      name: propify-api-key
+      name: propify-api-secret
