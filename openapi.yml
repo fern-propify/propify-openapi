@@ -1277,5 +1277,7 @@ components:
       in: header
       name: propify-api-secret
 servers:
-  - url: demo.getpropify.com/v1
-    description: demo
+  - url: https://demo.getpropify.com/v1
+    description: Demo
+  - url: https://api.getpropify.com/v1
+    description: Production
