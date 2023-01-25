@@ -1,6 +1,10 @@
 # Propify API OpenAPI spec
 
-This repository contains the [OpenAPI description](/openapi.yml) for <https://docs.getpropify.com/>.
+This repository contains the [OpenAPI description](/openapi.yml). 
+
+## Docs in Stoplight
+
+Check out what the Propify docs look like in another docs provider, like Stoplight: https://fern-demo.stoplight.io/docs/propify 
 
 ## What is OpenAPI?
 
